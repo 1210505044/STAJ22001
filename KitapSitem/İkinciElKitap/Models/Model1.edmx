@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="denemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Alici">
+          <Key>
+            <PropertyRef Name="AliciID" />
+          </Key>
+          <Property Name="AliciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kitap">
+          <Key>
+            <PropertyRef Name="KitapID" />
+          </Key>
+          <Property Name="KitapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KitapAd" Type="varchar" MaxLength="100" />
+          <Property Name="SayfaSayisi" Type="int" />
+          <Property Name="YayimlanmaTarihi" Type="date" />
+          <Property Name="Fiyat" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ResimURL" Type="varchar" MaxLength="255" />
+          <Property Name="YayineviID" Type="int" />
+          <Property Name="StokID" Type="int" />
+          <Property Name="KategoriID" Type="int" />
+          <Property Name="YazarID" Type="int" />
+          <Property Name="SaticiID" Type="int" />
+        </EntityType>
+        <EntityType Name="Satici">
+          <Key>
+            <PropertyRef Name="SaticiID" />
+          </Key>
+          <Property Name="SaticiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sepet">
+          <Key>
+            <PropertyRef Name="SepetID" />
+          </Key>
+          <Property Name="SepetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiparisID" Type="int" />
+          <Property Name="KitapID" Type="int" />
+          <Property Name="AliciID" Type="int" />
+        </EntityType>
+        <EntityType Name="Siparis">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="AliciID" Type="int" />
+        </EntityType>
+        <EntityType Name="Stok">
+          <Key>
+            <PropertyRef Name="StokID" />
+          </Key>
+          <Property Name="StokID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KalanMiktar" Type="int" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="UyeID" />
+          </Key>
+          <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeAd" Type="varchar" MaxLength="50" />
+          <Property Name="UyeSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+          <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yayinevi">
+          <Key>
+            <PropertyRef Name="YayineviID" />
+          </Key>
+          <Property Name="YayineviID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YayineviAd" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yazar">
+          <Key>
+            <PropertyRef Name="YazarID" />
+          </Key>
+          <Property Name="YazarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YazarAd" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Admin__UyeID__33D4B598">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Alici__UyeID__30F848ED">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Alici" Type="Self.Alici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Alici">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__KategoriI__38996AB5">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="KategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__SaticiID__3A81B327">
+          <End Role="Satici" Type="Self.Satici" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Satici">
+              <PropertyRef Name="SaticiID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="SaticiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__StokID__37A5467C">
+          <End Role="Stok" Type="Self.Stok" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stok">
+              <PropertyRef Name="StokID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="StokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__YayineviI__36B12243">
+          <End Role="Yayinevi" Type="Self.Yayinevi" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yayinevi">
+              <PropertyRef Name="YayineviID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="YayineviID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__YazarID__398D8EEE">
+          <End Role="Yazar" Type="Self.Yazar" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazar">
+              <PropertyRef Name="YazarID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Satici__UyeID__2E1BDC42">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Satici" Type="Self.Satici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Satici">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sepet__AliciID__6E01572D">
+          <End Role="Alici" Type="Self.Alici" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alici">
+              <PropertyRef Name="AliciID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="AliciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sepet__KitapID__412EB0B6">
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitap">
+              <PropertyRef Name="KitapID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="KitapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sepet__SiparisID__403A8C7D">
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siparis">
+              <PropertyRef Name="SiparisID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="SiparisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Siparis__AliciID__3D5E1FD2">
+          <End Role="Alici" Type="Self.Alici" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alici">
+              <PropertyRef Name="AliciID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="AliciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="denemeModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alici" EntityType="Self.Alici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kitap" EntityType="Self.Kitap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Satici" EntityType="Self.Satici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sepet" EntityType="Self.Sepet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparis" EntityType="Self.Siparis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stok" EntityType="Self.Stok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yayinevi" EntityType="Self.Yayinevi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yazar" EntityType="Self.Yazar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Admin__UyeID__33D4B598" Association="Self.FK__Admin__UyeID__33D4B598">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Alici__UyeID__30F848ED" Association="Self.FK__Alici__UyeID__30F848ED">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Alici" EntitySet="Alici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__KategoriI__38996AB5" Association="Self.FK__Kitap__KategoriI__38996AB5">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Kitap" EntitySet="Kitap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__SaticiID__3A81B327" Association="Self.FK__Kitap__SaticiID__3A81B327">
+            <End Role="Satici" EntitySet="Satici" />
+            <End Role="Kitap" EntitySet="Kitap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__StokID__37A5467C" Association="Self.FK__Kitap__StokID__37A5467C">
+            <End Role="Stok" EntitySet="Stok" />
+            <End Role="Kitap" EntitySet="Kitap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__YayineviI__36B12243" Association="Self.FK__Kitap__YayineviI__36B12243">
+            <End Role="Yayinevi" EntitySet="Yayinevi" />
+            <End Role="Kitap" EntitySet="Kitap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__YazarID__398D8EEE" Association="Self.FK__Kitap__YazarID__398D8EEE">
+            <End Role="Yazar" EntitySet="Yazar" />
+            <End Role="Kitap" EntitySet="Kitap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Satici__UyeID__2E1BDC42" Association="Self.FK__Satici__UyeID__2E1BDC42">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Satici" EntitySet="Satici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__AliciID__6E01572D" Association="Self.FK__Sepet__AliciID__6E01572D">
+            <End Role="Alici" EntitySet="Alici" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__KitapID__412EB0B6" Association="Self.FK__Sepet__KitapID__412EB0B6">
+            <End Role="Kitap" EntitySet="Kitap" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__SiparisID__403A8C7D" Association="Self.FK__Sepet__SiparisID__403A8C7D">
+            <End Role="Siparis" EntitySet="Siparis" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Siparis__AliciID__3D5E1FD2" Association="Self.FK__Siparis__AliciID__3D5E1FD2">
+            <End Role="Alici" EntitySet="Alici" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="denemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeID" Type="Int32" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK__Admin__UyeID__33D4B598" FromRole="Admin" ToRole="Uyeler" />
+        </EntityType>
+        <EntityType Name="Alici">
+          <Key>
+            <PropertyRef Name="AliciID" />
+          </Key>
+          <Property Name="AliciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeID" Type="Int32" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK__Alici__UyeID__30F848ED" FromRole="Alici" ToRole="Uyeler" />
+          <NavigationProperty Name="Siparis" Relationship="Self.FK__Siparis__AliciID__3D5E1FD2" FromRole="Alici" ToRole="Siparis" />
+          <NavigationProperty Name="Sepets" Relationship="denemeModel.FK__Sepet__AliciID__6E01572D" FromRole="Alici" ToRole="Sepet" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kitaps" Relationship="Self.FK__Kitap__KategoriI__38996AB5" FromRole="Kategori" ToRole="Kitap" />
+        </EntityType>
+        <EntityType Name="Kitap">
+          <Key>
+            <PropertyRef Name="KitapID" />
+          </Key>
+          <Property Name="KitapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitapAd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SayfaSayisi" Type="Int32" />
+          <Property Name="YayimlanmaTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Fiyat" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ResimURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="YayineviID" Type="Int32" />
+          <Property Name="StokID" Type="Int32" />
+          <Property Name="KategoriID" Type="Int32" />
+          <Property Name="YazarID" Type="Int32" />
+          <Property Name="SaticiID" Type="Int32" />
+          <NavigationProperty Name="Kategori" Relationship="Self.FK__Kitap__KategoriI__38996AB5" FromRole="Kitap" ToRole="Kategori" />
+          <NavigationProperty Name="Satici" Relationship="Self.FK__Kitap__SaticiID__3A81B327" FromRole="Kitap" ToRole="Satici" />
+          <NavigationProperty Name="Stok" Relationship="Self.FK__Kitap__StokID__37A5467C" FromRole="Kitap" ToRole="Stok" />
+          <NavigationProperty Name="Yayinevi" Relationship="Self.FK__Kitap__YayineviI__36B12243" FromRole="Kitap" ToRole="Yayinevi" />
+          <NavigationProperty Name="Yazar" Relationship="Self.FK__Kitap__YazarID__398D8EEE" FromRole="Kitap" ToRole="Yazar" />
+          <NavigationProperty Name="Sepets" Relationship="Self.FK__Sepet__KitapID__412EB0B6" FromRole="Kitap" ToRole="Sepet" />
+        </EntityType>
+        <EntityType Name="Satici">
+          <Key>
+            <PropertyRef Name="SaticiID" />
+          </Key>
+          <Property Name="SaticiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeID" Type="Int32" />
+          <NavigationProperty Name="Kitaps" Relationship="Self.FK__Kitap__SaticiID__3A81B327" FromRole="Satici" ToRole="Kitap" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK__Satici__UyeID__2E1BDC42" FromRole="Satici" ToRole="Uyeler" />
+        </EntityType>
+        <EntityType Name="Sepet">
+          <Key>
+            <PropertyRef Name="SepetID" />
+          </Key>
+          <Property Name="SepetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiparisID" Type="Int32" />
+          <Property Name="KitapID" Type="Int32" />
+          <NavigationProperty Name="Kitap" Relationship="Self.FK__Sepet__KitapID__412EB0B6" FromRole="Sepet" ToRole="Kitap" />
+          <NavigationProperty Name="Sipari" Relationship="Self.FK__Sepet__SiparisID__403A8C7D" FromRole="Sepet" ToRole="Siparis" />
+          <Property Name="AliciID" Type="Int32" />
+          <NavigationProperty Name="Alici" Relationship="denemeModel.FK__Sepet__AliciID__6E01572D" FromRole="Sepet" ToRole="Alici" />
+        </EntityType>
+        <EntityType Name="Sipari">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="AliciID" Type="Int32" />
+          <NavigationProperty Name="Alici" Relationship="Self.FK__Siparis__AliciID__3D5E1FD2" FromRole="Siparis" ToRole="Alici" />
+          <NavigationProperty Name="Sepets" Relationship="Self.FK__Sepet__SiparisID__403A8C7D" FromRole="Siparis" ToRole="Sepet" />
+        </EntityType>
+        <EntityType Name="Stok">
+          <Key>
+            <PropertyRef Name="StokID" />
+          </Key>
+          <Property Name="StokID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KalanMiktar" Type="Int32" />
+          <NavigationProperty Name="Kitaps" Relationship="Self.FK__Kitap__StokID__37A5467C" FromRole="Stok" ToRole="Kitap" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="UyeID" />
+          </Key>
+          <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UyeSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__UyeID__33D4B598" FromRole="Uyeler" ToRole="Admin" />
+          <NavigationProperty Name="Alicis" Relationship="Self.FK__Alici__UyeID__30F848ED" FromRole="Uyeler" ToRole="Alici" />
+          <NavigationProperty Name="Saticis" Relationship="Self.FK__Satici__UyeID__2E1BDC42" FromRole="Uyeler" ToRole="Satici" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Yayinevi">
+          <Key>
+            <PropertyRef Name="YayineviID" />
+          </Key>
+          <Property Name="YayineviID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YayineviAd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Kitaps" Relationship="Self.FK__Kitap__YayineviI__36B12243" FromRole="Yayinevi" ToRole="Kitap" />
+        </EntityType>
+        <EntityType Name="Yazar">
+          <Key>
+            <PropertyRef Name="YazarID" />
+          </Key>
+          <Property Name="YazarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YazarAd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kitaps" Relationship="Self.FK__Kitap__YazarID__398D8EEE" FromRole="Yazar" ToRole="Kitap" />
+        </EntityType>
+        <Association Name="FK__Admin__UyeID__33D4B598">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Alici__UyeID__30F848ED">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Alici" Type="Self.Alici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Alici">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Siparis__AliciID__3D5E1FD2">
+          <End Role="Alici" Type="Self.Alici" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Sipari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alici">
+              <PropertyRef Name="AliciID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="AliciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__KategoriI__38996AB5">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="KategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__SaticiID__3A81B327">
+          <End Role="Satici" Type="Self.Satici" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Satici">
+              <PropertyRef Name="SaticiID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="SaticiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__StokID__37A5467C">
+          <End Role="Stok" Type="Self.Stok" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stok">
+              <PropertyRef Name="StokID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="StokID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__YayineviI__36B12243">
+          <End Role="Yayinevi" Type="Self.Yayinevi" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yayinevi">
+              <PropertyRef Name="YayineviID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="YayineviID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kitap__YazarID__398D8EEE">
+          <End Role="Yazar" Type="Self.Yazar" Multiplicity="0..1" />
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazar">
+              <PropertyRef Name="YazarID" />
+            </Principal>
+            <Dependent Role="Kitap">
+              <PropertyRef Name="YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sepet__KitapID__412EB0B6">
+          <End Role="Kitap" Type="Self.Kitap" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitap">
+              <PropertyRef Name="KitapID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="KitapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Satici__UyeID__2E1BDC42">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Satici" Type="Self.Satici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="Satici">
+              <PropertyRef Name="UyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sepet__SiparisID__403A8C7D">
+          <End Role="Siparis" Type="Self.Sipari" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Siparis">
+              <PropertyRef Name="SiparisID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="SiparisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="denemeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Alicis" EntityType="Self.Alici" />
+          <EntitySet Name="Kategoris" EntityType="Self.Kategori" />
+          <EntitySet Name="Kitaps" EntityType="Self.Kitap" />
+          <EntitySet Name="Saticis" EntityType="Self.Satici" />
+          <EntitySet Name="Sepets" EntityType="Self.Sepet" />
+          <EntitySet Name="Siparis" EntityType="Self.Sipari" />
+          <EntitySet Name="Stoks" EntityType="Self.Stok" />
+          <EntitySet Name="Uyelers" EntityType="Self.Uyeler" />
+          <EntitySet Name="Yayinevis" EntityType="Self.Yayinevi" />
+          <EntitySet Name="Yazars" EntityType="Self.Yazar" />
+          <AssociationSet Name="FK__Admin__UyeID__33D4B598" Association="Self.FK__Admin__UyeID__33D4B598">
+            <End Role="Uyeler" EntitySet="Uyelers" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Alici__UyeID__30F848ED" Association="Self.FK__Alici__UyeID__30F848ED">
+            <End Role="Uyeler" EntitySet="Uyelers" />
+            <End Role="Alici" EntitySet="Alicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Siparis__AliciID__3D5E1FD2" Association="Self.FK__Siparis__AliciID__3D5E1FD2">
+            <End Role="Alici" EntitySet="Alicis" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__KategoriI__38996AB5" Association="Self.FK__Kitap__KategoriI__38996AB5">
+            <End Role="Kategori" EntitySet="Kategoris" />
+            <End Role="Kitap" EntitySet="Kitaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__SaticiID__3A81B327" Association="Self.FK__Kitap__SaticiID__3A81B327">
+            <End Role="Satici" EntitySet="Saticis" />
+            <End Role="Kitap" EntitySet="Kitaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__StokID__37A5467C" Association="Self.FK__Kitap__StokID__37A5467C">
+            <End Role="Stok" EntitySet="Stoks" />
+            <End Role="Kitap" EntitySet="Kitaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__YayineviI__36B12243" Association="Self.FK__Kitap__YayineviI__36B12243">
+            <End Role="Yayinevi" EntitySet="Yayinevis" />
+            <End Role="Kitap" EntitySet="Kitaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kitap__YazarID__398D8EEE" Association="Self.FK__Kitap__YazarID__398D8EEE">
+            <End Role="Yazar" EntitySet="Yazars" />
+            <End Role="Kitap" EntitySet="Kitaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__KitapID__412EB0B6" Association="Self.FK__Sepet__KitapID__412EB0B6">
+            <End Role="Kitap" EntitySet="Kitaps" />
+            <End Role="Sepet" EntitySet="Sepets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Satici__UyeID__2E1BDC42" Association="Self.FK__Satici__UyeID__2E1BDC42">
+            <End Role="Uyeler" EntitySet="Uyelers" />
+            <End Role="Satici" EntitySet="Saticis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__SiparisID__403A8C7D" Association="Self.FK__Sepet__SiparisID__403A8C7D">
+            <End Role="Siparis" EntitySet="Siparis" />
+            <End Role="Sepet" EntitySet="Sepets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__AliciID__6E01572D" Association="denemeModel.FK__Sepet__AliciID__6E01572D">
+            <End Role="Alici" EntitySet="Alicis" />
+            <End Role="Sepet" EntitySet="Sepets" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK__Sepet__AliciID__6E01572D">
+          <End Type="denemeModel.Alici" Role="Alici" Multiplicity="0..1" />
+          <End Type="denemeModel.Sepet" Role="Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alici">
+              <PropertyRef Name="AliciID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="AliciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="denemeModelStoreContainer" CdmEntityContainer="denemeEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="denemeModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alicis">
+            <EntityTypeMapping TypeName="denemeModel.Alici">
+              <MappingFragment StoreEntitySet="Alici">
+                <ScalarProperty Name="AliciID" ColumnName="AliciID" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoris">
+            <EntityTypeMapping TypeName="denemeModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kitaps">
+            <EntityTypeMapping TypeName="denemeModel.Kitap">
+              <MappingFragment StoreEntitySet="Kitap">
+                <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+                <ScalarProperty Name="KitapAd" ColumnName="KitapAd" />
+                <ScalarProperty Name="SayfaSayisi" ColumnName="SayfaSayisi" />
+                <ScalarProperty Name="YayimlanmaTarihi" ColumnName="YayimlanmaTarihi" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="ResimURL" ColumnName="ResimURL" />
+                <ScalarProperty Name="YayineviID" ColumnName="YayineviID" />
+                <ScalarProperty Name="StokID" ColumnName="StokID" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+                <ScalarProperty Name="SaticiID" ColumnName="SaticiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saticis">
+            <EntityTypeMapping TypeName="denemeModel.Satici">
+              <MappingFragment StoreEntitySet="Satici">
+                <ScalarProperty Name="SaticiID" ColumnName="SaticiID" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sepets">
+            <EntityTypeMapping TypeName="denemeModel.Sepet">
+              <MappingFragment StoreEntitySet="Sepet">
+                <ScalarProperty Name="AliciID" ColumnName="AliciID" />
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+                <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparis">
+            <EntityTypeMapping TypeName="denemeModel.Sipari">
+              <MappingFragment StoreEntitySet="Siparis">
+                <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="AliciID" ColumnName="AliciID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stoks">
+            <EntityTypeMapping TypeName="denemeModel.Stok">
+              <MappingFragment StoreEntitySet="Stok">
+                <ScalarProperty Name="StokID" ColumnName="StokID" />
+                <ScalarProperty Name="KalanMiktar" ColumnName="KalanMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uyelers">
+            <EntityTypeMapping TypeName="denemeModel.Uyeler">
+              <MappingFragment StoreEntitySet="Uyeler">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+                <ScalarProperty Name="UyeAd" ColumnName="UyeAd" />
+                <ScalarProperty Name="UyeSoyad" ColumnName="UyeSoyad" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yayinevis">
+            <EntityTypeMapping TypeName="denemeModel.Yayinevi">
+              <MappingFragment StoreEntitySet="Yayinevi">
+                <ScalarProperty Name="YayineviID" ColumnName="YayineviID" />
+                <ScalarProperty Name="YayineviAd" ColumnName="YayineviAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yazars">
+            <EntityTypeMapping TypeName="denemeModel.Yazar">
+              <MappingFragment StoreEntitySet="Yazar">
+                <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+                <ScalarProperty Name="YazarAd" ColumnName="YazarAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

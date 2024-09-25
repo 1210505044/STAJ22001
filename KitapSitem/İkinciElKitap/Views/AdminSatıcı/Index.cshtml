@@ -1,0 +1,101 @@
+﻿@using İkinciElKitap.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Satıcı Detayları</h2>
+
+<div>
+
+    <a class="btn btn-success rounded-2" href="/AdminSatıcı/Ekle">Satıcı Ekle</a>
+
+</div>
+
+
+<div>
+    <table class="table table-hover">
+        <tr>
+            <th>Satıcı Adı</th>
+            <th> Satıcı Soyadı</th>
+            <th>Kullanıcı Adı</th>
+            <th>E-mail</th>
+            <th>Sifre</th>
+
+
+
+
+
+
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+        <tbody>
+            @foreach (Satici k in Model)
+            {
+                <tr>
+                    <td> @k.Uyeler.UyeAd</td>
+                    <td> @k.Uyeler.UyeSoyad</td>
+                    <td> @k.Uyeler.KullaniciAdi</td>
+                    <td> @k.Uyeler.Email</td>
+                    <td>@k.Uyeler.Sifre</td>
+
+
+
+
+                    <td> <a class="btn btn-danger ktSil" data-ktId="@k.SaticiID" href="#">Sil</a> </td>
+                    <td> <a href="@Url.Action("Ekle", "AdminSatıcı", new { id = k.SaticiID })" class="btn btn-info">Güncelle</a></td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="~/NiceAdmin/js/jquery-1.11.1.js"></script>
+
+    <script>
+        $(".ktSil").click(
+            function () {
+
+                var sonuc = confirm("Satıcı Silinsin Mi?")
+                if (sonuc) {
+                    var ktId = $(this).attr("data-ktId")
+                    //alert("ID=" + ktId);
+                    $.ajax(
+                        {
+
+                            type: "POST",
+                            url: "/AdminSatıcı/Sil/" + ktId,
+                            success: function () {
+                                alert("Satıcı silindi");
+                                window.Location.replace("/AdminSatıcı/Index");
+
+                            },
+
+
+                            error: function () {
+                                alert("Hata oluştu");
+                            }
+                        }
+
+                    );
+
+                }
+                else {
+                    alert("işlem ipal edildi");
+
+                }
+            }
+
+
+
+        );
+
+    </script>
+}

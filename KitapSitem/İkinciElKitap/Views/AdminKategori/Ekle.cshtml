@@ -1,0 +1,24 @@
+﻿@model İkinciElKitap.Models.Kategori
+
+@{
+    ViewBag.Title = "Ekle";
+}
+
+
+<h2>@(Model.KategoriID == 0 ? "Kategori Ekleme İşlemleri" : "Kategori Güncelleme İşlemleri")</h2>
+
+<form action="/AdminKategori/Ekle" method="post">
+    @Html.HiddenFor(model => model.KategoriID)
+
+    <div>
+        <label> Kategori Adı :</label>
+        @Html.TextBoxFor(model => model.KategoriAd, new { @class = "form-control", placeholder = "Kategori adı giriniz" })
+    </div>
+
+    <div>
+        <input class="btn btn-success" type="submit" value="@((Model.KategoriID == 0 ? "Kategori EKLE" : "Kategori GÜNCELLE"))" />
+        <a class="btn btn-info" href="/AdminKategori/Index">Vazgeç</a>
+    </div>
+</form>
+
+

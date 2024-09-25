@@ -1,0 +1,109 @@
+﻿@using İkinciElKitap.Models
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Kitap>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kitap Detayları</h2>
+<div>
+
+    @*<a class="btn btn-success rounded-2" href="/AdminKitaplar/Ekle">Kitap Ekle</a>*@
+
+</div>
+
+
+<div>
+    <table class="table table-hover">
+        <tr>
+            <th> Kitap Adı</th>
+            <th> Sayfa Sayısı</th>
+            <th>Fiyat</th>
+            <th>ResimURL</th>
+            <th>Yayınevi Adı</th>
+            <th>Yazar Adı</th>
+            <th>Bulunduğu Kategori</th>
+            <th>Stok Mikarı</th>
+
+
+
+
+
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+        <tbody>
+            @foreach (Kitap k in Model)
+            {
+                <tr>
+                    <td> @k.KitapAd</td>
+                    <td> @k.SayfaSayisi</td>
+                    <td> @k.Fiyat</td>
+                    <td>@k.ResimURL</td>
+                    <td>@k.Yayinevi.YayineviAd</td>
+                    <td>@k.Yazar.YazarAd</td>
+                    <td>@k.Kategori.KategoriAd</td>
+                    <td>@k.Stok.KalanMiktar</td>
+                  
+
+
+                    <td> <a class="btn btn-danger ktSil" data-ktId="@k.KitapID" href="#">Sil</a> </td>
+                    <td> <a href="/AdminKitaplar/Ekle/@k.KitapID" class="btn btn-info">Güncelle</a></td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="~/NiceAdmin/js/jquery-1.11.1.js"></script>
+
+    <script>
+        $(".ktSil").click(
+            function () {
+
+                var sonuc = confirm("Kitap Silinsin Mi?")
+                if (sonuc) {
+                    var ktId = $(this).attr("data-ktId")
+                    //alert("ID=" + ktId);
+                    $.ajax(
+                        {
+
+                            type: "POST",
+                            url: "/AdminKitaplar/Sil/" + ktId,
+                            success: function () {
+                                alert("Kitap silindi");
+                                window.Location.replace("/AdminKitap/Index");
+
+                            },
+
+
+                            error: function () {
+                                alert("Hata oluştu");
+                            }
+                        }
+
+                    );
+
+                }
+                else {
+                    alert("işlem ipal edildi");
+
+                }
+            }
+
+
+
+        );
+
+    </script>
+
+}
+
+@Html.PagedListPager(Model, sayfa => Url.Action("Index", new {sayfa}),PagedListRenderOptions.Classic)

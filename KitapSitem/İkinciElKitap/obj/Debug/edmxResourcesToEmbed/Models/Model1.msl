@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="denemeModelStoreContainer" CdmEntityContainer="denemeEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="denemeModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alicis">
+      <EntityTypeMapping TypeName="denemeModel.Alici">
+        <MappingFragment StoreEntitySet="Alici">
+          <ScalarProperty Name="AliciID" ColumnName="AliciID" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategoris">
+      <EntityTypeMapping TypeName="denemeModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kitaps">
+      <EntityTypeMapping TypeName="denemeModel.Kitap">
+        <MappingFragment StoreEntitySet="Kitap">
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+          <ScalarProperty Name="KitapAd" ColumnName="KitapAd" />
+          <ScalarProperty Name="SayfaSayisi" ColumnName="SayfaSayisi" />
+          <ScalarProperty Name="YayimlanmaTarihi" ColumnName="YayimlanmaTarihi" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="ResimURL" ColumnName="ResimURL" />
+          <ScalarProperty Name="YayineviID" ColumnName="YayineviID" />
+          <ScalarProperty Name="StokID" ColumnName="StokID" />
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+          <ScalarProperty Name="SaticiID" ColumnName="SaticiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saticis">
+      <EntityTypeMapping TypeName="denemeModel.Satici">
+        <MappingFragment StoreEntitySet="Satici">
+          <ScalarProperty Name="SaticiID" ColumnName="SaticiID" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sepets">
+      <EntityTypeMapping TypeName="denemeModel.Sepet">
+        <MappingFragment StoreEntitySet="Sepet">
+          <ScalarProperty Name="AliciID" ColumnName="AliciID" />
+          <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+          <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Siparis">
+      <EntityTypeMapping TypeName="denemeModel.Sipari">
+        <MappingFragment StoreEntitySet="Siparis">
+          <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="AliciID" ColumnName="AliciID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stoks">
+      <EntityTypeMapping TypeName="denemeModel.Stok">
+        <MappingFragment StoreEntitySet="Stok">
+          <ScalarProperty Name="StokID" ColumnName="StokID" />
+          <ScalarProperty Name="KalanMiktar" ColumnName="KalanMiktar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uyelers">
+      <EntityTypeMapping TypeName="denemeModel.Uyeler">
+        <MappingFragment StoreEntitySet="Uyeler">
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="UyeAd" ColumnName="UyeAd" />
+          <ScalarProperty Name="UyeSoyad" ColumnName="UyeSoyad" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yayinevis">
+      <EntityTypeMapping TypeName="denemeModel.Yayinevi">
+        <MappingFragment StoreEntitySet="Yayinevi">
+          <ScalarProperty Name="YayineviID" ColumnName="YayineviID" />
+          <ScalarProperty Name="YayineviAd" ColumnName="YayineviAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yazars">
+      <EntityTypeMapping TypeName="denemeModel.Yazar">
+        <MappingFragment StoreEntitySet="Yazar">
+          <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+          <ScalarProperty Name="YazarAd" ColumnName="YazarAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

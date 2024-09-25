@@ -1,0 +1,198 @@
+﻿@using İkinciElKitap.Models
+@model Kitap
+@{
+    ViewBag.Title = "Kitap Ekleme/Güncelleme";
+}
+
+<h2>@(Model == null ? "Kitap Ekleme" : "Kitap Güncelleme")</h2>
+
+<form action="/AdminKitaplar/Ekle" method="post" enctype="multipart/form-data">
+    @if (Model == null)
+    {
+         <p>Kitap Adı </p>
+        <div>
+            <label>Kitap Adı:</label>
+            <input class="form-control" type="text" name="KitapAd" placeholder="Kitap Adı Giriniz" />
+        </div>
+        <br />
+
+        <p>Kitap Sayfa Sayısı </p>
+        <div>
+            <label>Kitap Sayfa Sayısı:</label>
+            <input class="form-control" type="number" name="SayfaSayisi" placeholder="Kitap sayfa sayısı Giriniz" />
+        </div>
+        <br />
+
+        <p>Kitap Fiyatı </p>
+        <div>
+            <label>Kitap Fiyatı:</label>
+            <input class="form-control"  type="number"  name="Fiyat" placeholder="Kitap Fiyatı Giriniz" />
+        </div>
+        <br />
+
+        <p>Resim URL </p>
+        <div>
+            <label>Resim URL :</label>
+            <input class="form-control" type="file" name="ResimURL" />
+        </div>
+        <br />
+
+        <p>Yayınevi </p>
+        <div>
+            <label>Yayınevi seçiniz</label>
+            <select class="form-control" name="YayineviID">
+                @foreach (var yay in ViewBag.yayinevi)
+                {
+                    <option value="@yay.YayineviID">@yay.YayineviAd</option>
+                }
+            </select>
+        </div>
+        <br />
+
+        <p>Yazar</p> 
+        <div>
+            <label>Yazar seçiniz</label>
+            <select class="form-control" name="YazarID">
+                @foreach (var yaz in ViewBag.yazar)
+                {
+                    <option value="@yaz.YazarID">@yaz.YazarAd</option>
+                }
+            </select>
+
+            <label for="new-author-checkbox">
+                <input type="checkbox" id="new-author-checkbox" />
+                Yeni Yazar Ekle
+            </label>
+
+            <input type="text" id="new-author-input" name="YeniYazarAd" placeholder="Yeni Yazar Adı" disabled />
+        </div>
+        <br />
+
+        <p>Stok Miktarı</p> 
+        <div>
+            <label>Stok Miktarı seçiniz</label>
+            <select class="form-control" name="StokID">
+                @foreach (var s in ViewBag.stok)
+                {
+                    <option value="@s.StokID">@s.KalanMiktar</option>
+                }
+            </select>
+        </div>
+        <br />
+
+        <p>Kategori</p>
+        <div>
+            <label>Kategori seçiniz</label>
+            <select class="form-control" name="KategoriID">
+                @foreach (var ka in ViewBag.kategori)
+                {
+                    <option value="@ka.KategoriID">@ka.KategoriAd</option>
+                }
+            </select>
+        </div>
+        <br />
+
+    }
+    else
+    {
+          <p>Ürün ID </p>
+        <div>
+            <label>Ürün ID:</label>
+            <input type="hidden" class="form-control" value="@Model.KitapID" name="KitapID" />
+        </div>
+
+        <p>Kitap Adı</p> 
+        <div>
+            <label>Kitap Adı:</label>
+            <input class="form-control" type="text" value="@Model.KitapAd" name="KitapAd" placeholder="Kitap Adı Giriniz" />
+        </div>
+        <br />
+
+        <p>Kitap Sayfa Sayısı </p>
+        <div>
+            <label>Kitap Sayfa Sayısı:</label>
+            <input class="form-control" type="number" value="@Model.SayfaSayisi" name="SayfaSayisi" placeholder="Kitap sayfa sayısı Giriniz" />
+        </div>
+        <br />
+
+        <p>Kitap Fiyatı </p>
+        <div>
+            <label>Kitap Fiyatı:</label>
+            <input class="form-control" type="number" value="@Model.Fiyat" name="Fiyat" placeholder="Kitap Fiyatı Giriniz" />
+        </div>
+        <br />
+
+        <p>Resim URL </p>
+        <div>
+            <label>Resim URL :</label>
+            <input class="form-control" type="text" value="@Model.ResimURL" name="ResimURL" />
+        </div>
+        <br />
+
+        <p>Yayınevi </p>
+        <div>
+            <label>Yayınevi seçiniz</label>
+            <select class="form-control" name="YayineviID">
+                @foreach (var yay in ViewBag.yayinevi)
+                {
+                    <option value="@yay.YayineviID" @(yay.YayineviID == Model.YayineviID ? "selected" : "")>@yay.YayineviAd</option>
+                }
+            </select>
+        </div>
+        <br />
+
+        <p>Yazar </p>
+        <div>
+            <label>Yazar seçiniz</label>
+            <select class="form-control" name="YazarID">
+                @foreach (var yaz in ViewBag.yazar)
+                {
+                    <option value="@yaz.YazarID" @(yaz.YazarID == Model.YazarID ? "selected" : "")>@yaz.YazarAd</option>
+                }
+            </select>
+
+            <label for="new-author-checkbox">
+                <input type="checkbox" id="new-author-checkbox" />
+                Yeni Yazar Ekle
+            </label>
+
+            <input type="text" id="new-author-input" name="YeniYazarAd" placeholder="Yeni Yazar Adı" disabled />
+        </div>
+        <br />
+
+        <p>Stok Miktarı </p>
+        <div>
+            <label>Stok Miktarı seçiniz</label>
+            <select class="form-control" name="StokID">
+                @foreach (var s in ViewBag.stok)
+                {
+                    <option value="@s.StokID" @(s.StokID == Model.StokID ? "selected" : "")>@s.KalanMiktar</option>
+                }
+            </select>
+        </div>
+        <br />
+
+        <p>Kategori</p> 
+        <div>
+            <label>Kategori seçiniz</label>
+            <select class="form-control" name="KategoriID">
+                @foreach (var ka in ViewBag.kategori)
+                {
+                    <option value="@ka.KategoriID" @(ka.KategoriID == Model.KategoriID ? "selected" : "")>@ka.KategoriAd</option>
+                }
+            </select>
+        </div>
+        <br />
+
+    }
+
+    <input class="btn btn-danger" type="submit" value="Kitap Ekle/Güncelle" />
+    <a class="btn btn-info" href="/AdminKitaplar/Index">Vazgeç</a>
+</form>
+
+<script>
+    document.getElementById('new-author-checkbox').addEventListener('change', function () {
+        var newAuthorInput = document.getElementById('new-author-input');
+        newAuthorInput.disabled = !this.checked;
+    });
+</script>

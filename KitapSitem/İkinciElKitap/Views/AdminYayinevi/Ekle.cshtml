@@ -1,0 +1,24 @@
+﻿@model İkinciElKitap.Models.Yayinevi
+
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>@(Model.YayineviID == 0 ? "Yayınevi Ekleme İşlemleri" : "Yayınevi Güncelleme İşlemleri")</h2>
+
+<form action="/AdminYayinevi/Ekle" method="post">
+    @Html.HiddenFor(model => model.YayineviID)
+
+    <div>
+        <label> Yayinevi Adı :</label>
+        @Html.TextBoxFor(model => model.YayineviAd, new { @class = "form-control", placeholder = "Yayinevi adı giriniz" })
+    </div>
+
+    <div>
+        <input class="btn btn-success" type="submit" value="@((Model.YayineviID == 0 ? "Yayınevi EKLE" : "Yayınevi GÜNCELLE"))" />
+        <a class="btn btn-info" href="/AdminYayinevi/Index">Vazgeç</a>
+    </div>
+</form>
+
+
+

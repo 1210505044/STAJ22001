@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a75eed9afe5f447da09949fda1e394a7" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="denemeModel.Admin" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Alici" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Kategori" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Kitap" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Satici" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Sepet" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Sipari" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Stok" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Uyeler" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Yayinevi" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="denemeModel.Yazar" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <AssociationConnector Association="denemeModel.FK__Admin__UyeID__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Alici__UyeID__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Siparis__AliciID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Kitap__KategoriI__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Kitap__SaticiID__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Kitap__StokID__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Kitap__YayineviI__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Kitap__YazarID__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Sepet__KitapID__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Satici__UyeID__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Sepet__SiparisID__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="denemeModel.FK__Sepet__AliciID__6E01572D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

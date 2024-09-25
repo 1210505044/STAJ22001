@@ -1,0 +1,100 @@
+﻿@model İkinciElKitap.Models.Uyeler
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login | E-Shopper</title>
+    <link href="~/eshop/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/eshop/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/eshop/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/eshop/css/price-range.css" rel="stylesheet">
+    <link href="~/eshop/css/animate.css" rel="stylesheet">
+    <link href="~/eshop/css/main.css" rel="stylesheet">
+    <link href="~/eshop/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/eshop/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/eshop/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/eshop/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/eshop/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+   
+    <section id="form">
+        <!--form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="login-form">
+                        <!--login form-->
+                        <h2>Giriş Yap</h2>
+                        <form action="/Account/Login" method="post">
+                            <input type="email" placeholder="Email Adresiniz" name="Email" />
+                            <input type="password" placeholder="Şifreniz" name="Sifre" />
+
+
+
+                            <button type="submit" class="btn btn-default">Giriş Yap</button>
+                        </form>
+                        <p>
+                            <a href="@Url.Action("ForgotPassword", "Account")">Şifremi Unuttum</a>
+                        </p>
+
+                    </div><!--/login form-->
+                </div>
+                <div class="col-sm-1">
+                    <h2 class="or">OR</h2>
+                </div>
+                <div class="col-sm-4">
+                    <div class="signup-form">
+                        <!--sign up form-->
+                        <h2>Kayıt Ol</h2>
+                        <form action="/Account/Register" method="post">
+                            <input type="text" placeholder="Adınızı giriniz" name="UyeAd" />
+                            <input type="text" placeholder="Soyadınızı giriniz" name="UyeSoyad" />
+                            <input type="text" placeholder="Kullanıcı Adı giriniz" name="KullaniciAdi" />
+                            <input type="email" placeholder="Email Adresi giriniz" name="Email" />
+                            <input type="password" placeholder="Şifre Giriniz" name="Sifre" />
+                            <div>
+                                <label>
+                                    <input type="radio" name="Rol" value="Satıcı" /> Satıcı
+                                </label>
+                                <label>
+                                    <input type="radio" name="Rol" value="Alıcı" /> Alıcı
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Kayıt Ol</button>
+                        </form>
+                        </form>
+                    </div><!--/sign up form-->
+                </div>
+            </div>
+        </div>
+    </section><!--/form-->
+
+
+   
+
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

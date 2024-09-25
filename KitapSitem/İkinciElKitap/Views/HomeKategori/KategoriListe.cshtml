@@ -1,0 +1,30 @@
+﻿@using İkinciElKitap.Models
+@model List<Kategori>
+    <div class="col-sm-3" style="margin-top:30px" >
+
+        <div class="left-sidebar">
+            <div class="brands_products">
+
+                <h2>Kaategoriler</h2>
+                <div class="brands-name"></div>
+                @foreach (var item in Model)
+                {
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="@Url.Action("KategoriyeGoreListele", "Home", new { id = item.KategoriID })">
+                                <span class="pull-right">(@item.Kitaps.Count)</span>@item.KategoriAd
+                            </a>
+                        </li>
+
+                    </ul>
+
+                }
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>

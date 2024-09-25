@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\monster\\source\\repos\\KitapSitem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5A4E599-2570-417B-BB36-108B77B80291}|\u0130kinciElKitap\\\u0130kinciElKitap.csproj|c:\\users\\monster\\source\\repos\\kitapsitem\\\u0130kincielkitap\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5A4E599-2570-417B-BB36-108B77B80291}|\u0130kinciElKitap\\\u0130kinciElKitap.csproj|solutionrelative:\u0130kincielkitap\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5A4E599-2570-417B-BB36-108B77B80291}|\u0130kinciElKitap\\\u0130kinciElKitap.csproj|c:\\users\\monster\\source\\repos\\kitapsitem\\\u0130kincielkitap\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5A4E599-2570-417B-BB36-108B77B80291}|\u0130kinciElKitap\\\u0130kinciElKitap.csproj|solutionrelative:\u0130kincielkitap\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\monster\\source\\repos\\KitapSitem\\\u0130kinciElKitap\\Views\\Shared\\Layout.cshtml",
+              "RelativeDocumentMoniker": "\u0130kinciElKitap\\Views\\Shared\\Layout.cshtml",
+              "ToolTip": "C:\\Users\\monster\\source\\repos\\KitapSitem\\\u0130kinciElKitap\\Views\\Shared\\Layout.cshtml",
+              "RelativeToolTip": "\u0130kinciElKitap\\Views\\Shared\\Layout.cshtml",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAAwAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-25T07:15:41.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\monster\\source\\repos\\KitapSitem\\\u0130kinciElKitap\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "\u0130kinciElKitap\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\monster\\source\\repos\\KitapSitem\\\u0130kinciElKitap\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "\u0130kinciElKitap\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-13T13:45:54.081Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

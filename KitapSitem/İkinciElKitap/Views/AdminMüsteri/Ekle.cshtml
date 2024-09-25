@@ -1,0 +1,44 @@
+﻿@model İkinciElKitap.Models.Alici
+@{
+    ViewBag.Title = "Ekle";
+}
+
+
+<h2>@(Model.AliciID == 0 ? "Müşteri Ekleme İşlemleri" : "Müşteri Güncelleme İşlemleri")</h2>
+
+<form action="/AdminMüsteri/Ekle" method="post">
+    @Html.HiddenFor(model => model.AliciID)
+
+    <div>
+        <label> Müşteri Adı :</label>
+        @Html.TextBoxFor(model => model.Uyeler.UyeAd, new { @class = "form-control", placeholder = " Müşteri Adı giriniz" })
+    </div>
+    <div>
+        <label> Müşteri Soyadı:</label>
+        @Html.TextBoxFor(model => model.Uyeler.UyeSoyad, new { @class = "form-control", placeholder = " Müşteri Soyadı giriniz" })
+    </div>
+    <div>
+        <label>Müşteri Kullanıcı Adı:</label>
+        @Html.TextBoxFor(model => model.Uyeler.KullaniciAdi, new { @class = "form-control", placeholder = "Müşteri Kullanıcı Adı giriniz" })
+    </div>
+    <div>
+        <label> Müşteri E-mail:</label>
+        @Html.TextBoxFor(model => model.Uyeler.Email, new { @class = "form-control", placeholder = "Müşteri E - mail" })
+    </div>
+    <div>
+        <label> Müşteri Şifre :</label>
+        @Html.TextBoxFor(model => model.Uyeler.Sifre, new { @class = "form-control", placeholder = " Müşteri Şifre giriniz" })
+    </div>
+    <div>
+        <label> Müşteri Rol :</label>
+        @Html.TextBoxFor(model => model.Uyeler.Rol, new { @class = "form-control", placeholder = " Müşteri Rol giriniz 'Alıcı' şeklinde giriniz " })
+    </div>
+
+
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" value="@((Model.AliciID == 0 ? "Müşteri Ekle" : "Müşteri Güncelle"))" />
+        <a class="btn btn-info" href="/AdminMüsteri/Index">Vazgeç</a>
+    </div>
+</form>

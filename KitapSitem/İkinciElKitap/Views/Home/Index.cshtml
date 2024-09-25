@@ -1,0 +1,110 @@
+﻿
+@using İkinciElKitap.Models
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Kitap>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<style>
+
+    .custom-style {
+        width: 500px;
+        height: 900px;
+    }
+</style>
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active" style="height:900px">
+                            <video autoplay muted loop>
+                                <source src="~/eshop/images/sliderson.mp4" type="video/mp4">
+                                Tarayıcınız video etiketini desteklemiyor.
+                            </video>
+                        </div>
+                        <div class="item " style="height:900px">
+                            <video autoplay muted loop>
+                                <source src="~/eshop/images/slider.mp4" type="video/mp4">
+                                Tarayıcınız video etiketini desteklemiyor.
+                            </video>
+                        </div>
+
+                        <div class="item " style="height:900px">
+                            <video autoplay muted loop>
+                                <source src="~/eshop/images/slidervideo2.mp4" type="video/mp4">
+                                Tarayıcınız video etiketini desteklemiyor.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+
+<section>
+    <div class="container">
+        <div class="row">
+            @Html.Action("KategoriListe", "HomeKategori")
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">ÜRÜNLERİMİZ</h2>  
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <a href="@Url.Action("Detay", "KitapDetay", new { id = item.KitapID })">
+                                            <img class="product-image-wrapper" src="~/eshop/images/@item.ResimURL" width="120" height="350" alt="@item.KitapAd" />
+                                        </a>
+                                        <h2>@item.Fiyat</h2>
+                                        <p>@item.KitapAd</p>
+                                        <a href="@Url.Action("Detay", "KitapDetay", new { id = item.KitapID })" class="btn btn-default add-to-cart">Ürün Detay</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+
+
+
+
+
+                </div><!--features_items-->
+                @Html.PagedListPager(Model, sayfa => Url.Action("Index", new { sayfa }), PagedListRenderOptions.Classic)
+
+
+                @*@Html.Action("PopularProduct", "Product")*@
+
+            </div>
+        </div>
+    </div>
+</section>

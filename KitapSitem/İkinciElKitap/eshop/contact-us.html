@@ -1,0 +1,15 @@
+<div class="max-width-s">
+    <h5>Şifrenizi mi unuttunuz?</h5>
+    <p class="paragraph">Size sıfırlama talimatlarını içeren bir e-posta göndereceğiz.</p>
+    <form action="" method="POST" id="kullanici_form">
+        <div class="form-group">
+            <label for="tc_no">TC. Kimlik No</label>
+            <input type="text" size="11" onkeypress="sayi(event);" maxlength="11" minlength="11" name="tc_no" id="tc_no" placeholder="Lütfen TC Kimlik Numaranızı Giriniz" required="">
+        </div>
+        <div class="form-group">
+            <label for="email">Eposta:</label>
+            <input id="email" type="email" name="email" placeholder="Eposta Adresinizi Giriniz" required="">
+        </div>
+        <button type="submit" class="button button-primary full-width space-top" id="kullanici_kaydet">Şifremi Unuttum</button>
+    </form>
+</div>

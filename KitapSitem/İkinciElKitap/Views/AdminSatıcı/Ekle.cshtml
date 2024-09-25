@@ -1,0 +1,44 @@
+﻿@model İkinciElKitap.Models.Satici
+
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>@(Model.SaticiID == 0 ? "Satıcı Ekleme İşlemleri" : "Satıcı Güncelleme İşlemleri")</h2>
+
+<form action="/AdminSatıcı/Ekle" method="post">
+    @Html.HiddenFor(model => model.SaticiID)
+
+    <div>
+        <label> Satıcı Adı :</label>
+        @Html.TextBoxFor(model => model.Uyeler.UyeAd, new { @class = "form-control", placeholder = " Satıcı Adı giriniz" })
+    </div>
+    <div>
+        <label> Satıcı Soyadı:</label>
+        @Html.TextBoxFor(model => model.Uyeler.UyeSoyad, new { @class = "form-control", placeholder = " Satıcı Soyadı giriniz" })
+    </div>
+    <div>
+        <label>Satıcı Kullanıcı Adı:</label>
+        @Html.TextBoxFor(model => model.Uyeler.KullaniciAdi, new { @class = "form-control", placeholder = "Satıcı Kullanıcı Adı giriniz" })
+    </div>
+    <div>
+        <label> Satıcı E-mail:</label>
+        @Html.TextBoxFor(model => model.Uyeler.Email, new { @class = "form-control", placeholder = "Satıcı E - mail" })
+    </div>
+    <div>
+        <label> Satıcı Şifre :</label>
+        @Html.TextBoxFor(model => model.Uyeler.Sifre, new { @class = "form-control", placeholder = " Satıcı Şifre giriniz" })
+    </div>
+    <div>
+        <label> Satıcı Rol :</label>
+        @Html.TextBoxFor(model => model.Uyeler.Rol, new { @class = "form-control", placeholder = " Lütfen Satıcıyı 'Satıcı' şeklinde giriniz " })
+    </div>
+
+
+    <br />
+
+    <div>
+        <input class="btn btn-success" type="submit" value="@((Model.SaticiID == 0 ? "Satıcı Ekle" : "Satıcı Güncelle"))" />
+        <a class="btn btn-info" href="/AdminSatıcı/Index">Vazgeç</a>
+    </div>
+</form>
